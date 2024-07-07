@@ -1,17 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Hello World");
 
-    function getHumanChoice() {
-        console.log("Choose One of these: ");
-        console.log("1) - rock");
-        console.log("2) - paper");
-        console.log("3) - scissors");
-
-        let choice = prompt("Enter your choice here: ").toLowerCase();
-        console.log(choice);
-        return choice;
-    }
-
     function getComputerChoice() {
         const choices = ["rock", "paper", "scissors"];
         const randomIndex = Math.floor(Math.random() * choices.length);
@@ -75,6 +64,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 computerScore++;
             }
             console.log(`Current Score: Human ${humanScore} - ${computerScore} Computer`);
+
+            // Check if either player or computer reaches 5 points
+            if (humanScore === 5 || computerScore === 5) {
+                announceWinner(); // Announce the winner
+            }
         }
 
         // Added event listeners to the buttons
@@ -82,17 +76,17 @@ document.addEventListener("DOMContentLoaded", function() {
         paperButton.addEventListener("click", handleClick);
         scissorsButton.addEventListener("click", handleClick);
 
-        // Commented out section for multiple rounds can be left out if using buttons
-
-        if (humanScore > computerScore) {
-            console.log("Victory!");
-        } else if (humanScore < computerScore) {
-            console.log("Defeat!");
-        } else if (humanScore === computerScore) {
-            console.log("Stalemate");
+        // Function to announce the winner
+        function announceWinner() {
+            if (humanScore > computerScore) {
+                console.log("Victory! Human wins!");
+            } else if (humanScore < computerScore) {
+                console.log("Defeat! Computer wins!");
+            } else {
+                console.log("Stalemate! It's a draw.");
+            }
+            console.log(`Final Score: Human ${humanScore} - ${computerScore} Computer`);
         }
-
-        console.log(`Final Score: Human ${humanScore} - ${computerScore} Computer`);
     }
 
     playGame(); // Start the game
