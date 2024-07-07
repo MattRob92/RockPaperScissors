@@ -56,6 +56,15 @@ function playGame() {
         }
     }
 
+    const Rock = document.querySelector("#Rock");
+    const Paper = document.querySelector("#Paper");
+    const Scissors = document.querySelector("#Scissors");
+
+    rockButton.addEventListener("click", handleClick);
+    paperButton.addEventListener("click", handleClick);
+    scissorsButton.addEventListener("click", handleClick);
+
+/*
     for (let p = 0; p < 5; p++) {
         let humanChoice = getHumanChoice();
         let computerChoice = getComputerChoice();
@@ -70,7 +79,7 @@ function playGame() {
 
         if (p === 4) {
             console.log("5 Rounds! End of the Game.");
-        }
+         }*/
     }
 
     if (humanScore > computerScore){
@@ -82,6 +91,6 @@ function playGame() {
     }
 
     console.log(`Final Score: Human ${humanScore} - ${computerScore} Computer`);
-}
+
 
 playGame();
